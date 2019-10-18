@@ -1,5 +1,3 @@
-using System.Reflection.Metadata;
-
 namespace WebApiUser.Models
 {
     public class User
