@@ -20,6 +20,25 @@ namespace WebApiUser.Controllers
             _context = context;
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> Get(int id)
+        {
+            try
+            {
+                var result = await _context.Users.FindAsync(id);
+                if (result != null)
+                {
+                    return result;
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetAll()
         {
@@ -28,14 +47,15 @@ namespace WebApiUser.Controllers
                 var result = await _context.Users.ToListAsync();
                 if (result.Any())
                 {
-                    return result;                        
+                    return result;
                 }
                 return NotFound();
             }
             catch (Exception ex)
-            {                
+            {
                 throw ex;
-            }            
+            }
+
         }
 
         [HttpPost]
@@ -53,5 +73,46 @@ namespace WebApiUser.Controllers
             }
         }
 
+        [HttpPut]
+        public async Task<ActionResult> Put([FromBody]User item)
+        {
+            try
+            {
+                var getItem = await _context.Users.FindAsync(item.Id);
+                if (getItem != null)
+                {
+                    _context.Users.Update(item);
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<User>> Delete(int id)
+        {
+            try
+            {
+                var item = await _context.Users.FindAsync(id);
+                if (item != null)
+                {
+                    _context.Users.RemoveRange(item);
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
     }
 }
