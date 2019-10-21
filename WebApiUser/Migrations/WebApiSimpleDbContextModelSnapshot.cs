@@ -21,7 +21,7 @@ namespace WebApiUser.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Emaill")
+                    b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")

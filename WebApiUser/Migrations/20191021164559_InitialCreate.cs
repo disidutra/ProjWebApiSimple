@@ -2,7 +2,7 @@
 
 namespace WebApiUser.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace WebApiUser.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
-                    Emaill = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
                     Phone = table.Column<string>(nullable: true),
                     Photo = table.Column<string>(nullable: true)
                 },

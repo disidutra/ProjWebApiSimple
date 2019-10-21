@@ -8,8 +8,8 @@ using WebApiUser.Models;
 namespace WebApiUser.Migrations
 {
     [DbContext(typeof(WebApiSimpleDbContext))]
-    [Migration("20191017231339_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20191021164559_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace WebApiUser.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Emaill")
+                    b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
